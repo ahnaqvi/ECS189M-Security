@@ -1,3 +1,9 @@
+/***************************************************************************************************************************************
+Using permission bits of a linux configuration file to secretly share message between two processes.*****************************
+An example of a covert channel attack*****************************************************************
+*/
+
+
 #include <stdio.h>
 #include <unistd.h>
 #include <sys/stat.h>
