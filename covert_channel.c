@@ -8,9 +8,12 @@ void main(int argc, char** argv) {
         return;
     }
     if (argv[1][5] != '\0') {
-        printf("Message should be 5 cahracters long\n");
+        printf("Message should be 5 cahracters long\n"); // message to secretly share
         return;
     }
+    // going to use the ./bash_history file, a hidden file.
+    //The last bit of the permissiosn will be changed to the
+    //bit of the message wished to be communicated
     char* user = getlogin(); // current user name
     int user_length = 0; //length of current user name
     for(;user[user_length] != '\0';user_length++);
@@ -38,6 +41,7 @@ void main(int argc, char** argv) {
     int fileperm, hidden_message;
     
     // now , fork!
+    //creating second process
     int pid = fork();
     for (i = 0; i < 5; i++) { // we'll be passing 5 bits
         if (pid == 0) { // child
